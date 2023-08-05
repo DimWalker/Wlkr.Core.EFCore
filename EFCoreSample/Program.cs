@@ -102,8 +102,11 @@ Console.WriteLine();
 
 //分页例子
 Console.WriteLine("SqlPaging分页:");
+//先构建条件，约等于id为奇数的数据
 sqlFormatter = new SqlFormatter();
 sqlFormatter.AppendLine_FmtStr($"and t.B = {false}");
+
+//除了等号逗号，写法基本与sql语句一致
 SqlPaging sqlPaging = new SqlPaging()
 {
     db = dbContext,
@@ -112,10 +115,14 @@ SqlPaging sqlPaging = new SqlPaging()
     WhereBuilder = sqlFormatter,
     OrderBy = " t.id desc"
 };
+
+//每页10条
 full = sqlPaging.Execute<TestModel>();
 Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(sqlPaging.PagingUtil));
 Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(full));
 Console.WriteLine();
+
+//每页5条，第三页
 sqlPaging.PagingUtil.PageSize = 5;
 sqlPaging.PagingUtil.PageIdx = 3;
 full = sqlPaging.Execute<TestModel>();

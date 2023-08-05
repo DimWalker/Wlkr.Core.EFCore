@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageIcon>DimTechStudio-Icon.png</PackageIcon>
+    <Description>老派SQL之必要</Description>
   </PropertyGroup>
 
   <ItemGroup>
