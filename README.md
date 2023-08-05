@@ -177,6 +177,8 @@ Console.WriteLine();
 反射方面的性能没有对比，暂略。
 
 ## 其他
+既然是老派SQL，当然少不了DbFirst。
+后续补充DbFirst转CodeFirst开发模式。
 To Be Continue...
 
 ## Author Info
