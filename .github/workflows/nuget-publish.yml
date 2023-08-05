@@ -1,0 +1,35 @@
+name: Publish NuGet Package
+
+on:
+  push:
+    branches:
+      - master # 修改为你的主分支名
+    paths:
+      - 'Directory.Build.props'
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.x' # 修改为你的.NET版本
+
+      - name: Restore NuGet packages
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Pack NuGet package
+        run: |
+          cd Wlkr.Core.EFCore
+          dotnet pack Wlkr.Core.EFCore.csproj  --configuration Release --no-build          
+
+      - name: Publish NuGet package
+        run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
