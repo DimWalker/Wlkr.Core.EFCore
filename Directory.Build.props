@@ -16,7 +16,7 @@
 		<!--<RevisionTime>$([System.DateTime]::Now.ToString("HHmm"))</RevisionTime>-->
 		<BuildNumber>$(MajorVersion).$(MinorVersion).$(BuildDate).$(RevisionTime)</BuildNumber>
 	</PropertyGroup>
-
+ 
 	<!-- Use the calculated version for the NuGet package -->
 	<PropertyGroup>
 		<VersionPrefix>$(BuildNumber)</VersionPrefix>
