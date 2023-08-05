@@ -1,0 +1,25 @@
+
+##### DBFirst
+Scaffold-DbContext -Connection "Server=(LocalDb)\MSSQLLocalDB;Database=EFCoreSample_DbFirst;Trusted_Connection=True;TrustServerCertificate=True" -Context EFCoreSampleDbContext -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Models" -Force
+
+
+##### 转CodeFirst
+
+# 手动迁移，必须手动修改
+# EFCoreSampleDbContext.cs -》 OnConfiguring -》 把EFCoreSample_DbFirst改为EFCoreSample
+
+# 生成migration
+add-migration init -Context EFCoreSampleDbContext
+# 记得先修改EFCoreSampleDbContext自动生成的连接字符串
+update-database -Context EFCoreSampleDbContext
+
+# Str改S
+add-migration 0001 -Context EFCoreSampleDbContext
+update-database -Context EFCoreSampleDbContext
+
+# 回滚数据库（不能回滚为空数据库？）
+Update-Database init
+
+# 删除上一migration
+Remove-Migration
+
