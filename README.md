@@ -1,4 +1,4 @@
-[![DimTechStudio.Com](https://raw.githubusercontent.com/DimWalker/Wlkr.Core.EFCore/master/vx_images/DimTechStudio-Logo.png)](https://www.dimtechstudio.com/)
+[![DimTechStudio.Com](vx_iamges/DimTechStudio-Logo.png)](https://www.dimtechstudio.com/)
 
 # Wlkr.Core.EFCore
 逆天，我在ef core中使用ado.net！
